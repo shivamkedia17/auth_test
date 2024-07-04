@@ -1,0 +1,23 @@
+<h1>Logged in as: {{ request.user.username }}</h1>
+
+<form method="post" action="{% url 'test_list' %}">
+  {% csrf_token %}
+  <button type="submit">List Files in Drive</button>
+</form>
+
+<form method="post" action="{% url 'test_create' %}">
+  {% csrf_token %}
+  <button type="submit">Create File in Drive</button>
+</form>
+
+<form id="download_form" method="post" action="{% url 'test_download' %}">
+  {% csrf_token %} {{ download_form.as_p }}
+  <button type="submit">Download File from Drive</button>
+</form>
+
+<form id="delete_form" method="post" action="{% url 'test_delete' %}">
+  {% csrf_token %} {{ delete_form.as_p }}
+  <button type="submit">Delete File in Drive</button>
+</form>
+
+<a href="{% url 'account_logout' %}">Logout</a>
